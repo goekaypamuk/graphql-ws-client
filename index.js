@@ -21,6 +21,9 @@ module.exports =  (params) => {
     });
 
     webSocket.on('close', () => {
+        if (params.selfDestroy) {
+            process.exit(1);
+        }
         deferred = new Deferred();
     });
 
